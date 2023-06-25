@@ -37,7 +37,7 @@ services:
     volumes:
       - images:/tgbot/images
     command: sh -c 
-      "python3 manage.py createsuperuser --name=admin22 --tgid=77777777 --password=admin22 --noinput
+      "python3 manage.py createsuperuser --name=admin222 --tgid=727777777 --password=admin222 --noinput
       && python3 main.py"
     depends_on:
       - django-admin
