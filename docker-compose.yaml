@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  django-admin:
+    build:
+      context: ./tgbot
+    container_name: django-admin
+    environment:
+      - DB_NAME=level
+      - DB_HOST=postgres
+      - DB_USER=dika 
+      - DB_PASS=12345
+    restart: always
+    ports:
+      - 8000:8000
+    volumes:
+      - images:/tgbot/images
+    depends_on:
+      - postgres
+    command: sh -c
+      "python3 manage.py makemigrations app
+      && python3 manage.py migrate
+      && python3 manage.py runserver 0.0.0.0:$PORT"   
+  tgbot:
+    build:
+      context: ./tgbot
+    container_name: tgbot
+    environment:
+      - DB_NAME=level
+      - DB_HOST=postgres
+      - DB_USER=dika
+      - DB_PASS=12345
+      - API_TOKEN=6205664464:AAH1YoZ2EEG9VxwaImOHS9j1maf6wJUirrI
+    restart: always
+    ports:
+      - 8001:8001
+    volumes:
+      - images:/tgbot/images
+    command: sh -c 
+      "python3 manage.py createsuperuser --name=admin22 --tgid=77777777 --password=admin22 --noinput
+      && python3 main.py"
+    depends_on:
+      - django-admin
+      - postgres
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=level
+      - POSTGRES_USER=dika
+      - POSTGRES_PASSWORD=12345
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+volumes:
+  images: {}
+  pgdata: {}
