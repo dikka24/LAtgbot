@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-eer!p9ze*m_rzdgju%_-ctf8h(c#*5tp!3u)v=&0eu_nqyu6qj
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
@@ -52,16 +52,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "HOST": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
-#         "PORT": os.environ.get("DATABASE_URL").split(":")[3].split("/")[0],
-#         "NAME": os.environ.get("DATABASE_URL").split("/")[-1],
-#         "USER": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
-#         "PASSWORD": os.environ.get("DATABASE_URL").split(":")[2].split("@")[0],
-#     }
-# }
 
 DATABASES = {
     "default": {
@@ -93,22 +83,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru-ru"
 
-TIME_ZONE = "Asia/Ashkhabad"
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "/static/"
+STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "app.Admin"
 
-
+MEDIA_URL = ""
 
 MEDIA_ROOT = ""
-
-DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
-DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_OAUTH2_TOKEN")
-MEDIA_URL = ""
