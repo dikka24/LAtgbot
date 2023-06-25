@@ -9,7 +9,7 @@ SECRET_KEY = "django-insecure-eer!p9ze*m_rzdgju%_-ctf8h(c#*5tp!3u)v=&0eu_nqyu6qj
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [*]
 
 
 INSTALLED_APPS = [
@@ -70,7 +70,7 @@ DATABASES = {
         "USER": os.environ.get("DB_USER"),
         "PASSWORD": os.environ.get("DB_PASS"),
         "HOST": os.environ.get("DB_HOST"),
-        "PORT": 5432
+        "PORT": os.environ.get("DB_PORT")
     }
 }
 
@@ -111,4 +111,4 @@ MEDIA_ROOT = ""
 
 DEFAULT_FILE_STORAGE = "storages.backends.dropbox.DropBoxStorage"
 DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_OAUTH2_TOKEN")
-MEDIA_URL = "/media/"
+MEDIA_URL = ""
