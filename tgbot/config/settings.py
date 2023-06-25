@@ -52,27 +52,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
-        "PORT": os.environ.get("DATABASE_URL").split(":")[3].split("/")[0],
-        "NAME": os.environ.get("DATABASE_URL").split("/")[-1],
-        "USER": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
-        "PASSWORD": os.environ.get("DATABASE_URL").split(":")[2].split("@")[0],
-    }
-}
-
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.environ.get("DB_NAME"),
-#         "USER": os.environ.get("DB_USER"),
-#         "PASSWORD": os.environ.get("DB_PASS"),
-#         "HOST": os.environ.get("DB_HOST"),
-#         "PORT": 5432
+#         "HOST": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
+#         "PORT": os.environ.get("DATABASE_URL").split(":")[3].split("/")[0],
+#         "NAME": os.environ.get("DATABASE_URL").split("/")[-1],
+#         "USER": os.environ.get("DATABASE_URL").split("//")[1].split(":")[0],
+#         "PASSWORD": os.environ.get("DATABASE_URL").split(":")[2].split("@")[0],
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASS"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT")
+    }
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
